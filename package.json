@@ -1,0 +1,21 @@
+{
+  "name": "unscrumble-stacktrace",
+  "version": "0.0.1",
+  "homepage": "https://github.com/vadzappa/unscrumble-stacktrace",
+  "license": "BSD-3-Clause",
+  "author": {
+    "name": "Vadzim Zapolski-Dounar",
+    "email": "v.zapolskydovnar@gmail.com"
+  },
+  "main": "unscrumble-stacktrace",
+  "description": "Unscramble stack traces (using map files).",
+  "dependencies": {
+    "async": "^1.5.2",
+    "lodash": "^4.6.1",
+    "source-map": "0.1.37"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vadzappa/unscrumble-stacktrace"
+  }
+}
