@@ -1,32 +1,20 @@
-<!--
-Copyright (c) 2012 The Chromium Authors. All rights reserved.
-Use of this source code is governed by a BSD-style license that can be
-found in the LICENSE file.
--->
-
 <html>
 <head>
-	<style>
-		body {
-			font-family: monospace;
-			word-wrap: break-word;
-		}
-
-		#container {
-			white-space: pre;
-		}
-
-		.request {
-			border-top: 1px solid black;
-			margin-bottom: 10px;
-		}
-
-	</style>
-
-	<script src="unscramble-stack-trace.js"></script>
+	<link rel="stylesheet" href="main.css">
+	<script src="unscrambler.js" async></script>
 </head>
 
 <body>
-<div id="container"></div>
+<div>
+	<div class="stack-trace-input">
+		<label for="stack-trace">Stack trace</label>
+		<textarea id="stack-trace" name="stack-trace"></textarea>
+		<button name="unscramble-action">Unscramble</button>
+	</div>
+	<div class="stack-trace-output">
+		<div class="loading"><img src="process.png"/></div>
+		<textarea class="output"></textarea>
+	</div>
+</div>
 </body>
 </html>

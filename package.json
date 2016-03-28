@@ -21,6 +21,8 @@
   "devDependencies": {
     "browserify": "^13.0.0",
     "gulp": "^3.9.1",
+    "gulp-contrib-copy": "^0.1.2",
+    "gulp-sass": "^2.2.0",
     "mocha": "^2.4.5",
     "sinon": "^1.17.3",
     "vinyl-source-stream": "^1.1.0"

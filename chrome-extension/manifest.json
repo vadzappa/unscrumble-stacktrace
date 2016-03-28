@@ -5,12 +5,10 @@
 	"version": "1.0",
 	"browser_action": {
 		"default_icon": "icon.png",
+		"default_popup": "unscrambler.html",
 		"default_title": "Unscramble stack trace"
 	},
-	"background": {
-		"scripts": ["background.js"]
-	},
 	"permissions": [
-		"debugger"
+		"<all_urls>"
 	]
 }

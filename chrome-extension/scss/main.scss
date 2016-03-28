@@ -1,0 +1,34 @@
+@import "variables";
+@import "animations";
+
+body {
+	width: $width;
+	height: $height;
+	font-size: $fontSize;
+}
+
+textarea, label {
+	display: block;
+}
+textarea {
+	width: 100%;
+	height: $height/2;
+}
+
+button {
+	display: inline-block;
+}
+
+.stack-trace-input, .stack-trace-output {
+	width: 95%;
+}
+
+.stack-trace-output {
+	.loading {
+		&.show {
+			display: inline-block;
+			-webkit-animation:spin 1s linear infinite;
+		}
+		display: none;
+	}
+}
