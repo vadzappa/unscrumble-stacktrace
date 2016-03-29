@@ -7,17 +7,27 @@ var gulp = require('gulp'),
 	uglify = require('gulp-uglify'),
 	buffer = require('vinyl-buffer'),
 	source = require('vinyl-source-stream'),
-	buildFolder = './dist/';
+	buildFolder = './dist/',
+	prodFolder = './prod';
 
 gulp.task('copy', function() {
 	return gulp.src(['./chrome-extension/**', '!./chrome-extension/scss/**/*'])
 		.pipe(gulp.dest(buildFolder));
 });
 
-gulp.task('browserify', function() {
+gulp.task('script:foreground', function() {
 	return browserify('./lib/extension/main')
 		.bundle()
 		.pipe(source('unscrambler.js'))
+		.pipe(buffer())
+		.pipe(production(uglify()))
+		.pipe(gulp.dest(buildFolder));
+});
+
+gulp.task('script:background', function() {
+	return browserify('./lib/extension/background')
+		.bundle()
+		.pipe(source('context.js'))
 		.pipe(buffer())
 		.pipe(production(uglify()))
 		.pipe(gulp.dest(buildFolder));
@@ -31,4 +41,9 @@ gulp.task('sass', function() {
 		.pipe(gulp.dest(buildFolder));
 });
 
-gulp.task('build', ['copy', 'browserify', 'sass']);
+gulp.task('build', ['copy', 'script:foreground', 'script:background', 'sass']);
+
+gulp.task('prod', function() {
+	return gulp.src(['./chrome-extension/**', '!./chrome-extension/scss/**/*'])
+		.pipe(gulp.dest(prodFolder));
+});

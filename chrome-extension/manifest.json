@@ -4,11 +4,19 @@
 	"description": "This extension shows unscrambled stack traces in case map files available for JS files on the page",
 	"version": "1.0",
 	"browser_action": {
-		"default_icon": "icon.png",
-		"default_popup": "unscrambler.html",
-		"default_title": "Unscramble stack trace"
+		"background_page": "unscrambler.html"
+	},
+	"icons": {
+		"16": "icon-bitty.png"
+	},
+	"background": {
+		"scripts": [
+			"context.js"
+		]
 	},
 	"permissions": [
-		"<all_urls>"
+		"<all_urls>",
+		"contextMenus",
+		"tabs"
 	]
 }
