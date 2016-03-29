@@ -17,6 +17,8 @@
 	"permissions": [
 		"<all_urls>",
 		"contextMenus",
+		"storage",
+		"unlimitedStorage",
 		"tabs"
 	]
 }
