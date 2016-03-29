@@ -6,9 +6,14 @@ var gulp = require('gulp'),
 	production = require('gulp-environments').production,
 	uglify = require('gulp-uglify'),
 	buffer = require('vinyl-buffer'),
+	clean = require('gulp-clean'),
 	source = require('vinyl-source-stream'),
-	buildFolder = './dist/',
-	prodFolder = './prod';
+	buildFolder = './dist/';
+
+gulp.task('clean', function() {
+	return gulp.src(buildFolder + '**/*', {read: false})
+		.pipe(clean());
+});
 
 gulp.task('copy', function() {
 	return gulp.src(['./chrome-extension/**', '!./chrome-extension/scss/**/*'])
@@ -21,7 +26,7 @@ gulp.task('script:foreground', function() {
 		.pipe(source('unscrambler.js'))
 		.pipe(buffer())
 		.pipe(production(uglify()))
-		.pipe(gulp.dest(buildFolder));
+		.pipe(gulp.dest(buildFolder + 'js'));
 });
 
 gulp.task('script:background', function() {
@@ -30,7 +35,7 @@ gulp.task('script:background', function() {
 		.pipe(source('context.js'))
 		.pipe(buffer())
 		.pipe(production(uglify()))
-		.pipe(gulp.dest(buildFolder));
+		.pipe(gulp.dest(buildFolder + 'js'));
 });
 
 gulp.task('sass', function() {
@@ -38,12 +43,7 @@ gulp.task('sass', function() {
 		.pipe(sass().on('error', sass.logError))
 		.pipe(concat('main.css'))
 		.pipe(production(cleanCSS()))
-		.pipe(gulp.dest(buildFolder));
+		.pipe(gulp.dest(buildFolder + 'css'));
 });
 
-gulp.task('build', ['copy', 'script:foreground', 'script:background', 'sass']);
-
-gulp.task('prod', function() {
-	return gulp.src(['./chrome-extension/**', '!./chrome-extension/scss/**/*'])
-		.pipe(gulp.dest(prodFolder));
-});
+gulp.task('build', ['clean', 'copy', 'script:foreground', 'script:background', 'sass']);

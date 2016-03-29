@@ -11,7 +11,7 @@
 	},
 	"background": {
 		"scripts": [
-			"context.js"
+			"js/context.js"
 		]
 	},
 	"permissions": [

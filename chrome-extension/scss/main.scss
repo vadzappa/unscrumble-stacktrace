@@ -1,18 +1,47 @@
-@import "variables";
 @import "animations";
 
+$traceWidth: 60%;
+
 body {
-	width: $width;
-	height: $height;
-	font-size: $fontSize;
+	.traces {
+		width: $traceWidth;
+		float: left;
+	}
+
+	.traces-history {
+		width: 100% - $traceWidth;
+		float: right;
+		ul {
+			list-style: none;
+			margin: 0;
+			padding: 0;
+			max-width: 40%;
+			li {
+				cursor: pointer;
+				list-style: none;
+				margin: 5px;
+				padding: 5px;
+				background-color: #eeeeee;
+				border: 1px solid #dddddd;
+			}
+		}
+	}
+
+	.clear {
+		float: none;
+		clear: both;
+		content: "";
+	}
 }
 
 textarea, label {
 	display: block;
+	margin: 5px 0;
 }
+
 textarea {
 	width: 100%;
-	height: $height/2;
+	height: 200px;
 }
 
 button {

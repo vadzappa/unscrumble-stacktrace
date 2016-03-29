@@ -1,20 +1,45 @@
+<!DOCTYPE html>
 <html>
 <head>
-	<link rel="stylesheet" href="main.css">
-	<script src="unscrambler.js" async></script>
+	<link rel="stylesheet" href="css/main.css">
+	<script src="js/unscrambler.js" async></script>
 </head>
 
 <body>
-<div>
+<div class="traces">
 	<div class="stack-trace-input">
 		<label for="stack-trace">Stack trace</label>
-		<textarea id="stack-trace" name="stack-trace"></textarea>
-		<button name="unscramble-action">Unscramble</button>
+		<div class="controls">
+			<textarea id="stack-trace" name="stack-trace"></textarea>
+			<button name="unscramble-action" type="button" class="btn btn-default btn-sm">Unscramble</button>
+		</div>
 	</div>
 	<div class="stack-trace-output">
 		<div class="loading"><img src="process.png"/></div>
 		<textarea class="output"></textarea>
 	</div>
 </div>
+<div class="traces-history">
+	<h4>History</h4>
+	<ul>
+		<li>
+			<div class="timestamp">2016-09-11</div>
+			<div class="details">First line of the message</div>
+		</li>
+		<li>
+			<div class="timestamp">2016-09-11</div>
+			<div class="details">First line of the message</div>
+		</li>
+		<li>
+			<div class="timestamp">2016-09-11</div>
+			<div class="details">First line of the message</div>
+		</li>
+		<li>
+			<div class="timestamp">2016-09-11</div>
+			<div class="details">First line of the message</div>
+		</li>
+	</ul>
+</div>
+<div class="clear"></div>
 </body>
 </html>
