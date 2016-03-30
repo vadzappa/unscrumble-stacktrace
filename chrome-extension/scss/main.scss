@@ -18,6 +18,7 @@ body {
 			max-width: 40%;
 			max-height: 450px;
 			overflow-y: auto;
+
 			li {
 				cursor: pointer;
 				list-style: none;
@@ -25,6 +26,22 @@ body {
 				padding: 5px;
 				background-color: #eeeeee;
 				border: 1px solid #dddddd;
+				position: relative;
+
+				.details {
+					overflow: hidden;
+					text-overflow: ellipsis;
+				}
+				.history-actions {
+					position: absolute;
+					top: 5px;
+					right: 5px;
+					a, a:active, a:hover, a:visited {
+						text-decoration: none;
+						font-weight: bold;
+						color: #FF6666;
+					}
+				}
 			}
 		}
 	}
