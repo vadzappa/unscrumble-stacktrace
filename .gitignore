@@ -3,4 +3,4 @@ node_modules
 stack.log
 chrome-extension/unscramble-stack-trace.js
 dist
-prod
+build
