@@ -2,7 +2,7 @@
   "name": "unscrumble-stacktrace",
   "version": "0.0.1",
   "homepage": "https://github.com/vadzappa/unscrumble-stacktrace",
-  "license": "BSD-3-Clause",
+  "license": "MIT",
   "author": {
     "name": "Vadzim Zapolski-Dounar",
     "email": "v.zapolskydovnar@gmail.com"
