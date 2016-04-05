@@ -23,6 +23,11 @@ gulp.task('copy', function() {
 		.pipe(gulp.dest(distFolder()));
 });
 
+gulp.task('copy:pem', function() {
+	return gulp.src(['./*.pem'])
+		.pipe(gulp.dest(distFolder()));
+});
+
 gulp.task('script:foreground', function() {
 	return browserify('./lib/extension/main')
 		.bundle()
@@ -51,7 +56,7 @@ gulp.task('sass', function() {
 
 gulp.task('build', ['clean', 'copy', 'script:foreground', 'script:background', 'sass']);
 
-gulp.task('zip', ['clean', 'copy', 'script:foreground', 'script:background', 'sass'], function() {
+gulp.task('zip', ['clean', 'copy', 'copy:pem', 'script:foreground', 'script:background', 'sass'], function() {
 	var manifest = require('./chrome-extension/manifest'),
 		distFileName = manifest.name + ' v' + manifest.version + '.zip';
 
