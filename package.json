@@ -1,41 +1,41 @@
 {
-	"name": "unscrumble-stacktrace",
-	"version": "0.0.1",
-	"homepage": "https://github.com/vadzappa/unscrumble-stacktrace",
-	"license": "MIT",
-	"author": {
-		"name": "Vadzim Zapolski-Dounar",
-		"email": "v.zapolskydovnar@gmail.com"
-	},
-	"main": "unscrumble-stacktrace",
-	"description": "Unscramble stack traces (using map files).",
-	"scripts": {
-		"build": "gulp build"
-	},
-	"dependencies": {
-		"async": "^1.5.2",
-		"jquery": "^2.2.2",
-		"lodash": "^4.6.1",
-		"moment": "^2.12.0",
-		"source-map": "0.1.37"
-	},
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/vadzappa/unscrumble-stacktrace"
-	},
-	"devDependencies": {
-		"browserify": "^13.0.0",
-		"gulp": "^3.9.1",
-		"gulp-clean": "^0.3.2",
-		"gulp-clean-css": "^2.0.4",
-		"gulp-concat": "^2.6.0",
-		"gulp-environments": "^0.1.1",
-		"gulp-sass": "^2.2.0",
-		"gulp-uglify": "^1.5.3",
-		"gulp-zip": "^3.2.0",
-		"mocha": "^2.4.5",
-		"sinon": "^1.17.3",
-		"vinyl-buffer": "^1.0.0",
-		"vinyl-source-stream": "^1.1.0"
-	}
+  "name": "unscrumble-stacktrace",
+  "version": "0.0.2",
+  "homepage": "https://github.com/vadzappa/unscrumble-stacktrace",
+  "license": "MIT",
+  "author": {
+    "name": "Vadzim Zapolski-Dounar",
+    "email": "v.zapolskydovnar@gmail.com"
+  },
+  "main": "unscrumble-stacktrace",
+  "description": "Unscramble stack traces (using map files).",
+  "scripts": {
+    "build": "gulp build"
+  },
+  "dependencies": {
+    "async": "^1.5.2",
+    "jquery": "^2.2.2",
+    "lodash": "^4.6.1",
+    "moment": "^2.12.0",
+    "source-map": "0.1.37"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/vadzappa/unscrumble-stacktrace"
+  },
+  "devDependencies": {
+    "browserify": "^13.0.0",
+    "gulp": "^3.9.1",
+    "gulp-clean": "^0.3.2",
+    "gulp-clean-css": "^2.0.4",
+    "gulp-concat": "^2.6.0",
+    "gulp-environments": "^0.1.1",
+    "gulp-sass": "^2.2.0",
+    "gulp-uglify": "^1.5.3",
+    "gulp-zip": "^3.2.0",
+    "mocha": "^2.4.5",
+    "sinon": "^1.17.3",
+    "vinyl-buffer": "^1.0.0",
+    "vinyl-source-stream": "^1.1.0"
+  }
 }
