@@ -1,22 +1,24 @@
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Unscramble stack trace",
 	"description": "This extension shows unscrambled stack traces in case map files available for JS files on the page",
-	"version": "1.2",
-	"browser_action": {
-		"background_page": "unscrambler.html"
+	"version": "2.0",
+	"action": {
+		"default_icon": {
+			"16": "icon-bitty.png"
+		}
 	},
 	"icons": {
 		"16": "icon-bitty.png"
 	},
 	"background": {
-		"scripts": [
-			"js/context.js"
-		]
+		"service_worker": "js/context.js"
 	},
 	"permissions": [
-		"<all_urls>",
 		"contextMenus",
 		"storage"
+	],
+	"host_permissions": [
+		"*://*/*"
 	]
 }

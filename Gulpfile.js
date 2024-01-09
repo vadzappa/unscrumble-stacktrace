@@ -1,70 +1,75 @@
-var gulp = require('gulp'),
-	browserify = require('browserify'),
-	sass = require('gulp-sass'),
-	concat = require('gulp-concat'),
-	cleanCSS = require('gulp-clean-css'),
-	production = require('gulp-environments').production,
-	uglify = require('gulp-uglify'),
-	buffer = require('vinyl-buffer'),
-	zip = require('gulp-zip'),
-	clean = require('gulp-clean'),
-	source = require('vinyl-source-stream'),
-	distFolder = function() {
-		return production() ? './build/' : './dist/';
-	};
+const gulp = require('gulp');
+const browserify = require('browserify');
+const concat = require('gulp-concat');
+const cleanCSS = require('gulp-clean-css');
+const production = require('gulp-environments').production;
+const uglify = require('gulp-uglify');
+const buffer = require('vinyl-buffer');
+const zip = require('gulp-zip');
+const clean = require('gulp-clean');
+const source = require('vinyl-source-stream');
 
-gulp.task('clean', function() {
-	return gulp.src(distFolder() + '**/*', {read: false})
+const distFolder = function () {
+	return production() ? './build/' : './dist/';
+};
+
+const cleanTask = function () {
+	return gulp.src(distFolder() + '**/*', { read: false })
 		.pipe(clean());
-});
+};
 
-gulp.task('copy', function() {
+const copyTask = function () {
 	return gulp.src(['./chrome-extension/**', '!./chrome-extension/scss{,/**}'])
 		.pipe(gulp.dest(distFolder()));
-});
+};
 
-gulp.task('copy:pem', function() {
+const copyPemTask = function () {
 	return gulp.src(['./*.pem'])
 		.pipe(gulp.dest(distFolder()));
-});
+};
 
-gulp.task('script:foreground', function() {
+const scriptForegroundTask = function () {
 	return browserify('./lib/extension/main')
 		.bundle()
 		.pipe(source('unscrambler.js'))
 		.pipe(buffer())
 		.pipe(production(uglify()))
 		.pipe(gulp.dest(distFolder() + 'js'));
-});
+};
 
-gulp.task('script:background', function() {
+const scriptBackgroundTask = function () {
 	return browserify('./lib/extension/background')
 		.bundle()
 		.pipe(source('context.js'))
 		.pipe(buffer())
 		.pipe(production(uglify()))
 		.pipe(gulp.dest(distFolder() + 'js'));
-});
+};
 
-gulp.task('sass', function() {
-	return gulp.src('./chrome-extension/scss/**/*.scss')
-		.pipe(sass().on('error', sass.logError))
+const stylesTask = function () {
+	return gulp.src('./chrome-extension/css/**/*.css')
 		.pipe(concat('main.css'))
 		.pipe(production(cleanCSS()))
 		.pipe(gulp.dest(distFolder() + 'css'));
-});
+};
 
-gulp.task('build', ['clean', 'copy', 'script:foreground', 'script:background', 'sass']);
-
-gulp.task('zip', ['clean', 'copy', 'copy:pem', 'script:foreground', 'script:background', 'sass'], function() {
-	var manifest = require('./chrome-extension/manifest'),
-		distFileName = manifest.name + ' v' + manifest.version + '.zip';
+const zipManifestTask = function () {
+	const manifest = require('./chrome-extension/manifest');
+	const distFileName = manifest.name + ' v' + manifest.version + '.zip';
 
 	return gulp.src([distFolder() + '/**/*'])
 		.pipe(zip(distFileName))
 		.pipe(gulp.dest(distFolder()));
-});
+};
 
-gulp.task('chrome-extension', ['clean'], function() {
-	gulp.start('zip');
-});
+const zipTask = gulp.series(cleanTask, copyTask, copyPemTask, scriptForegroundTask, scriptBackgroundTask, stylesTask, zipManifestTask);
+
+gulp.task('copy', copyTask);
+gulp.task('clean', cleanTask);
+gulp.task('copy:pem', copyPemTask);
+gulp.task('script:foreground', scriptForegroundTask);
+gulp.task('script:background', scriptBackgroundTask);
+gulp.task('sass', stylesTask);
+gulp.task('build', gulp.series(cleanTask, copyTask, scriptForegroundTask, scriptBackgroundTask, stylesTask));
+gulp.task('zip', zipTask);
+gulp.task('chrome-extension', gulp.series(cleanTask, zipTask));
