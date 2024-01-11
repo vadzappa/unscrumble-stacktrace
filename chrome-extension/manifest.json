@@ -2,7 +2,7 @@
 	"manifest_version": 3,
 	"name": "Unscramble stack trace",
 	"description": "This extension shows unscrambled stack traces in case map files available for JS files on the page",
-	"version": "2.0",
+	"version": "2.1",
 	"action": {
 		"default_icon": {
 			"16": "icon-bitty.png"

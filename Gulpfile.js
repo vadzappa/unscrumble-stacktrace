@@ -1,7 +1,6 @@
 const gulp = require('gulp');
 const browserify = require('browserify');
 const concat = require('gulp-concat');
-const cleanCSS = require('gulp-clean-css');
 const production = require('gulp-environments').production;
 const uglify = require('gulp-uglify');
 const buffer = require('vinyl-buffer');
@@ -49,7 +48,6 @@ const scriptBackgroundTask = function () {
 const stylesTask = function () {
 	return gulp.src('./chrome-extension/css/**/*.css')
 		.pipe(concat('main.css'))
-		.pipe(production(cleanCSS()))
 		.pipe(gulp.dest(distFolder() + 'css'));
 };
 

@@ -11,6 +11,7 @@
 	"main": "unscrumble-stacktrace",
 	"description": "Unscramble stack traces (using map files).",
 	"scripts": {
+		"gulp": "gulp",
 		"build": "gulp build"
 	},
 	"dependencies": {
@@ -28,7 +29,6 @@
 		"browserify": "^13.0.0",
 		"gulp": "^4.0.2",
 		"gulp-clean": "^0.4.0",
-		"gulp-clean-css": "^4.3.0",
 		"gulp-concat": "^2.6.0",
 		"gulp-environments": "^1.0.1",
 		"gulp-uglify": "^3.0.2",
